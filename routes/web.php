@@ -19,7 +19,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('produtos', 'MeuControlador@produtos');
+Route::get('produtos', function() {
+    return view('others.produtos');
+})->name('produtos');
+
+Route::get('departamentos', function() {
+    return view('others.departamentos');
+})->name('departamentos');;
 
 Route::resource('clientes', 'ClienteControlador');
 
