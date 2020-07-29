@@ -1,4 +1,6 @@
 @extends('layouts.principal')
+@section('titulo','Clientes')   
+
 @section('conteudo')
     <h3>{{$titulo}}</h3>
     <a href="{{ route ('clientes.create') }}">Novo Cliente</a>
@@ -23,5 +25,22 @@
     @empty($clientes)<h4>Não existe clientes Cadastrados.</h4>@endempty
 
     @endif
-
+    <hr>
+    @for($i=0;$i<count($clientes);$i++)
+        {{ $clientes[$i]['nome'] }},
+    @endfor
+    <br>
+    @foreach ($clientes as $c)
+    <p>
+        {{$c['nome']}}
+        @if($loop->first)
+            (primeiro) |
+        @endif
+        @if($loop->last)
+        (último) |
+        @endif
+        ({{ $loop->index }}) - {{ $loop->iteration }} / {{ $loop->count }} |
+    </p>
+       
+    @endforeach
 @endsection
